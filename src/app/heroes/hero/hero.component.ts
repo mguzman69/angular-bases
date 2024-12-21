@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-heroes-hero',
   templateUrl: './hero.component.html',
+  imports: [CommonModule],
   styleUrl: './hero.component.css'
 })
 
