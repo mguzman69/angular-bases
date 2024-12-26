@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
+import { v4 as uuid } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,15 @@ import { Character } from '../interfaces/character.interface';
 export class DbzService {
 
   public characters: Character[] = [{
+    id: uuid(),
     name: 'Krillin',
     power: 500
   },{
+    id: uuid(),
     name:'Goku',
     power: 2000
   },{
+    id: uuid(),
     name: 'Vegeta',
     power: 1500
   }
@@ -21,14 +25,18 @@ export class DbzService {
 onNewCharacter( character:Character ):void {
   //console.log('MainPage');
   //console.log(character);
-  if (this.characters.find(personaje => personaje.name === character.name)) return;
+  if (this.characters.find( personaje => personaje.name === character.name)) return;
 
-  this.characters.push( character );
+  //usar ...character copia todos los atributos que tenga character de manera automatica, luego los campos nuevos
+  const newChar: Character = {...character,  id: uuid()}
+
+  this.characters.push( newChar );
+  console.log(newChar);
 }
 
-onDeleteCharacter( index: number):void {
-  console.log('onDeleteCharacter( index: number):void');
-  this.characters.splice(index,1);
+onDeleteCharacter( id:string):void {
+  console.log('serviceOnDeleteCharacter borrando id',id);
+  this.characters.splice(0,1);
 }
 
   constructor() { }

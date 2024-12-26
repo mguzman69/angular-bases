@@ -16,9 +16,14 @@ export class ListComponent {
   @Output()
   public onDelete: EventEmitter<number> = new EventEmitter();
 
-  public onDeleteCharacter(index:number): void {
+  public onDeleteCharacter(id:string): void {
     // Todo Emitir el ID del personaje
-    console.log('onDeleteCharacter',index)
-    this.characterList.splice(index,1);
+    console.log('onDeleteCharacter de list.component','id',id)
+    //this.characterList.splice(index,1);
+    const characterIndex = this.characterList.findIndex(character => character.id === id);
+    if (characterIndex !== -1) {
+      this.characterList.splice(characterIndex, 1);
+      this.onDelete.emit(characterIndex);
+    }
   }
 }
