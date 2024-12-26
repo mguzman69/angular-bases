@@ -13,8 +13,10 @@ export class ListComponent {
   @Input()
   public characterList: Character [] = [ ]
 
+  @Output()
+  public onDelete: EventEmitter<number> = new EventEmitter();
 
-  public DeleteCharacter(index:number): void {
+  public onDeleteCharacter(index:number): void {
     // Todo Emitir el ID del personaje
     console.log('onDeleteCharacter',index)
     this.characterList.splice(index,1);
