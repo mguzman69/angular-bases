@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
   selector: 'dbz-list',
-  imports: [NgFor],
+  imports: [NgFor,NgClass],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })

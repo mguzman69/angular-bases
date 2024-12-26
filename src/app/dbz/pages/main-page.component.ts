@@ -2,6 +2,7 @@ import { Component, Input, input, OnInit } from '@angular/core';
 import { ListComponent } from "../components/list/list.component";
 import { AddCharacterComponent } from '../components/addcharacter/addcharacter.component';
 import { Character } from '../interfaces/character.interface';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-dbz-main-page',
