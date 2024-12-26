@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Character } from '../../interfaces/character.interface';
 
@@ -11,9 +11,12 @@ import { Character } from '../../interfaces/character.interface';
 
 export class ListComponent {
   @Input()
-  public characterList: Character [] = [{
-      name: 'Trunks',
-      power: 10
-    }
-  ]
+  public characterList: Character [] = [ ]
+
+
+  public DeleteCharacter(index:number): void {
+    // Todo Emitir el ID del personaje
+    console.log('onDeleteCharacter',index)
+    this.characterList.splice(index,1);
+  }
 }

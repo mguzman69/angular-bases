@@ -13,14 +13,27 @@ import { NgModel } from '@angular/forms';
 export class MainPageComponent  {
   public characters: Character[] = [{
       name: 'Krillin',
-      power: 1000
+      power: 500
     },{
       name:'Goku',
-      power: 10000
+      power: 2000
     },{
       name: 'Vegeta',
-      power: 6000
+      power: 1500
     }
   ];
+
+  onNewCharacter( character:Character ):void {
+    //console.log('MainPage');
+    //console.log(character);
+    if (this.characters.find(personaje => personaje.name === character.name)) return;
+
+    this.characters.push( character );
+  }
+
+  onDeleteCharacter( index: number):void {
+    console.log('onDeleteCharacter( index: number):void');
+    this.characters.splice(index,1);
+  }
 
 }
