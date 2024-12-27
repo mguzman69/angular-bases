@@ -22,9 +22,18 @@ export class DbzService {
   }
 ];
 
-onNewCharacter( character:Character ):void {
-  //console.log('MainPage');
-  //console.log(character);
+/**
+ * Adds a new character to the characters array if it doesn't already exist
+ * @param character - The character object to be added
+ * @returns void
+ * @description
+ * This method performs the following:
+ * 1. Checks if a character with the same name already exists
+ * 2. If it exists, returns early without adding
+ * 3. If it's new, creates a copy of the character with a new UUID
+ * 4. Adds the new character to the characters array
+ */
+NewCharacter( character:Character ):void {
   if (this.characters.find( personaje => personaje.name === character.name)) return;
 
   //usar ...character copia todos los atributos que tenga character de manera automatica, luego los campos nuevos
@@ -34,11 +43,16 @@ onNewCharacter( character:Character ):void {
   console.log(newChar);
 }
 
-onDeleteCharacter( id:string):void {
-  console.log('serviceOnDeleteCharacter borrando id',id);
-  this.characters.splice(0,1);
+/**
+ * Deletes a character from the characters list based on the provided ID.
+ *
+ * @param {string} id - The ID of the character to be deleted.
+ * @returns {void}
+ */
+DeleteCharacter(id:string):void {
+  console.log('XXX borrando en servicio id',id);
+  this.characters = this.characters.filter(char => char.id !== id);
 }
-
   constructor() { }
 
 }

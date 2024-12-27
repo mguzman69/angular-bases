@@ -13,8 +13,11 @@ import { DbzService } from '../services/dbz.service.ts.service';
 })
 
 export class MainPageComponent  {
-  constructor (public  dbzService: DbzService ) {
+  constructor (public dbzService: DbzService ) {
+  }
 
+  DeleteCharacter(id: string):void {
+    this.dbzService.DeleteCharacter(id);
   }
 
 }

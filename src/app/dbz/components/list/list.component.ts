@@ -14,16 +14,10 @@ export class ListComponent {
   public characterList: Character [] = [ ]
 
   @Output()
-  public onDelete: EventEmitter<number> = new EventEmitter();
+  public onDelete: EventEmitter<string> = new EventEmitter();
 
-  public onDeleteCharacter(id:string): void {
-    // Todo Emitir el ID del personaje
-    console.log('onDeleteCharacter de list.component','id',id)
-    //this.characterList.splice(index,1);
-    const characterIndex = this.characterList.findIndex(character => character.id === id);
-    if (characterIndex !== -1) {
-      this.characterList.splice(characterIndex, 1);
-      this.onDelete.emit(characterIndex);
-    }
+  public BorraPersonaje(id:string): void {
+    //lamando el evento
+    this.onDelete.emit(id);
   }
 }

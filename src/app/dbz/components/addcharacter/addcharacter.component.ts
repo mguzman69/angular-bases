@@ -17,7 +17,7 @@ export class AddCharacterComponent {
   public onNewCharacter: EventEmitter<Character> = new EventEmitter();
 
   public character: Character = { id:'',name:'', power:0 }
-nameInput: any;
+  nameInput: any;
 
   emitCharacter():void {
     console.log('In emitCharacter',this.character);
@@ -32,5 +32,8 @@ nameInput: any;
     //No usar esto, ya que solo cambia los nombre y poder del objeto actual
     //this.character.name = '';
     //this.character.power = 0;
+    console.log('haciendo focus', this.nameInput);
+
+    this.nameInput.nativeElement.focus();
   }
 }

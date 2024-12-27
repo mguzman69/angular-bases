@@ -6,14 +6,13 @@
       [(ngModel)]="character.name"
       name="name"
       class="form-control mb-2"
-      placeholder="Nombre">
+      placeholder="Nombre" required #nameInput
+      >
     <input type="number"
       [(ngModel)]="character.power"
       name="power"
       [value]="character.power"
       class="form-control mb-2" placeholder="Poder">
-    <button type="submit" class="btn btn-primary">
-      Agregar
-    </button>
+    <button type="submit" #powerButton class="btn btn-primary">Agregar</button>
   </form>
 </div>
