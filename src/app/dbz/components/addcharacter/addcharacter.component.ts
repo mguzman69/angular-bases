@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,8 @@ export class AddCharacterComponent {
   public onNewCharacter: EventEmitter<Character> = new EventEmitter();
 
   public character: Character = { id:'',name:'', power:0 }
-  nameInput: any;
+
+  @ViewChild('txtNameInput') txtNameInput!: ElementRef<HTMLInputElement>
 
   emitCharacter():void {
     console.log('In emitCharacter',this.character);
@@ -32,8 +33,10 @@ export class AddCharacterComponent {
     //No usar esto, ya que solo cambia los nombre y poder del objeto actual
     //this.character.name = '';
     //this.character.power = 0;
-    console.log('haciendo focus', this.nameInput);
+    console.log('haciendo focus', this.txtNameInput);
 
-    this.nameInput.nativeElement.focus();
+    //this.txtNameInput.nativeElement.selectionStart = 0;
+    //this.txtNameInput.nativeElement.selectionEnd = this.txtNameInput.nativeElement.value.length;
+    this.txtNameInput.nativeElement.focus();
   }
 }
