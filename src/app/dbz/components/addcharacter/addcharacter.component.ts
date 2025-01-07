@@ -19,11 +19,17 @@ export class AddCharacterComponent {
   public character: Character = { id:'',name:'', power:0 }
 
   @ViewChild('txtNameInput') txtNameInput!: ElementRef<HTMLInputElement>
+  @ViewChild('txtPowerInput') txtPowerInput!: ElementRef<HTMLInputElement>
 
   emitCharacter():void {
     console.log('In emitCharacter',this.character);
     if (this.character.name.length === 0) return;
     if (this.character.power < 0) return;
+    if (this.character.power === 0) {
+      console.log('needs power!!');
+      this.txtPowerInput.nativeElement.focus();
+      return
+    }
 
     this.onNewCharacter.emit(this.character);
 
